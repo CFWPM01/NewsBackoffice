@@ -1,0 +1,385 @@
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body, .wrap { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14px; background: #f5f5f5; color: #222; }
+
+  /* TOP NAV */
+  .topnav { background: #1a1a1a; display: flex; align-items: center; padding: 0 16px; height: 44px; gap: 2px; }
+  .topnav a { color: #ccc; text-decoration: none; padding: 0 12px; height: 44px; display: flex; align-items: center; font-size: 13px; }
+  .topnav a:hover { color: #fff; }
+  .topnav a.active { color: #fff; background: #333; }
+  .topnav .brand { color: #fff; font-weight: 600; margin-right: 8px; font-size: 13px; }
+  .badge { background: #e53935; color: #fff; border-radius: 10px; font-size: 10px; font-weight: 700; padding: 1px 5px; margin-left: 4px; }
+  .topnav-right { margin-left: auto; color: #aaa; font-size: 13px; }
+
+  /* SECOND NAV */
+  .subnav { background: #fff; border-bottom: 1px solid #e0e0e0; padding: 0 24px; display: flex; gap: 0; }
+  .subnav a { color: #555; text-decoration: none; padding: 12px 16px; font-size: 13px; border-bottom: 2px solid transparent; display: block; }
+  .subnav a:hover { color: #222; }
+  .subnav a.active { color: #b8860b; border-bottom-color: #b8860b; font-weight: 500; }
+
+  /* BREADCRUMB */
+  .breadcrumb { padding: 10px 24px; font-size: 12px; color: #888; }
+  .breadcrumb a { color: #b8860b; text-decoration: none; }
+  .breadcrumb a:hover { text-decoration: underline; }
+
+  /* PAGE HEADER */
+  .page-header { padding: 16px 24px 12px; display: flex; align-items: center; justify-content: space-between; }
+  .page-header h1 { font-size: 26px; font-weight: 600; color: #111; }
+  .btn-green { background: #5a7a2e; color: #fff; border: none; padding: 9px 18px; border-radius: 4px; font-size: 13px; font-weight: 500; cursor: pointer; }
+  .btn-green:hover { background: #4a6a22; }
+
+  /* TAB BAR (subtabs) */
+  .tabbar { background: #fff; border-bottom: 1px solid #ddd; padding: 0 24px; display: flex; gap: 0; }
+  .tabbar button { background: none; border: none; border-bottom: 2px solid transparent; padding: 10px 16px; font-size: 13px; color: #666; cursor: pointer; font-family: inherit; }
+  .tabbar button:hover { color: #222; background: #f9f9f9; }
+  .tabbar button.active { color: #222; border-bottom-color: #333; font-weight: 500; }
+
+  /* CONTENT AREA */
+  .content { padding: 20px 24px; }
+
+  /* INFO BAR */
+  .info-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+  .info-bar .count { color: #666; font-size: 13px; }
+  .search-row { display: flex; gap: 8px; }
+  .search-row input { border: 1px solid #ccc; border-radius: 3px; padding: 6px 10px; font-size: 13px; width: 200px; }
+  .search-row input:focus { outline: none; border-color: #999; }
+  .btn-search { background: #7a6a2e; color: #fff; border: none; padding: 6px 14px; border-radius: 3px; font-size: 13px; cursor: pointer; }
+  .btn-reset { background: none; border: none; color: #888; font-size: 13px; cursor: pointer; padding: 6px 8px; }
+
+  /* TABLE */
+  .table-wrap { background: #fff; border: 1px solid #e0e0e0; border-radius: 4px; overflow: hidden; }
+  table { width: 100%; border-collapse: collapse; }
+  thead th { text-align: left; padding: 10px 14px; font-size: 12px; font-weight: 600; color: #555; border-bottom: 1px solid #e0e0e0; background: #fafafa; }
+  tbody tr { border-bottom: 1px solid #f0f0f0; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #fafafa; }
+  tbody td { padding: 10px 14px; font-size: 13px; vertical-align: top; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 6px; flex-shrink: 0; }
+  .dot.green { background: #4caf50; }
+  .dot.amber { background: #ffa726; }
+  .name-cell { display: flex; align-items: flex-start; gap: 0; }
+  .name-cell a { color: #b8860b; text-decoration: none; font-size: 13px; }
+  .name-cell a:hover { text-decoration: underline; }
+  .path { color: #b8860b; font-size: 13px; }
+  .seo-title { color: #333; font-size: 12px; }
+  .seo-desc { color: #888; font-size: 12px; margin-top: 2px; }
+  .badge-tag { display: inline-block; background: #fff3e0; color: #e65100; border: 1px solid #ffcc80; border-radius: 3px; font-size: 10px; font-weight: 600; padding: 1px 5px; margin-left: 4px; }
+  .badge-tag.nofollow { background: #fff8e1; color: #f57f17; border-color: #ffe082; }
+  .del { color: #c62828; font-size: 13px; cursor: pointer; text-decoration: none; }
+  .del:hover { text-decoration: underline; }
+  .time { color: #888; font-size: 12px; }
+  .type-pill { display: inline-block; border-radius: 10px; font-size: 11px; font-weight: 500; padding: 2px 8px; }
+  .type-pill.news { background: #e3f2fd; color: #1565c0; }
+  .type-pill.review { background: #f3e5f5; color: #6a1b9a; }
+
+  /* PAGINATION */
+  .pagination { display: flex; align-items: center; justify-content: center; gap: 4px; margin-top: 20px; }
+  .pagination button { border: 1px solid #ddd; background: #fff; color: #555; padding: 5px 10px; border-radius: 3px; font-size: 13px; cursor: pointer; }
+  .pagination button.active { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
+  .pagination button:hover:not(.active) { background: #f5f5f5; }
+
+  /* EMPTY STATE */
+  .empty { padding: 48px 24px; text-align: center; color: #aaa; font-size: 13px; }
+
+  /* DESCRIPTION CARD */
+  .desc-card { background: #fffde7; border: 1px solid #ffe082; border-radius: 4px; padding: 12px 16px; margin-bottom: 20px; font-size: 13px; color: #555; line-height: 1.5; }
+  .desc-card strong { color: #333; }
+</style>
+
+<div class="wrap">
+  <!-- TOP NAV -->
+  <div class="topnav">
+    <span class="brand">Dashboard <span class="badge">4068</span></span>
+    <a href="#">Deals</a>
+    <a href="#">Vehicles</a>
+    <a href="#" class="active" onclick="return false">Content</a>
+    <a href="#">Users</a>
+    <a href="#">Redirects</a>
+    <a href="#">OTR Calculator</a>
+    <a href="#">Discounts</a>
+    <a href="#">Wiki</a>
+    <a href="#">Tax</a>
+    <a href="#">Feeds</a>
+    <a href="#">Settings</a>
+    <span class="topnav-right">Sadeek Rahman</span>
+  </div>
+
+  <!-- SECOND NAV (Content subtabs) -->
+  <div class="subnav" id="subnav">
+    <a href="#" onclick="switchSection('pages');return false" id="nav-pages" class="active">Pages</a>
+    <a href="#" onclick="switchSection('newsreviews');return false" id="nav-newsreviews">News &amp; Reviews</a>
+    <a href="#" onclick="return false">Guides</a>
+    <a href="#" onclick="return false">FAQs</a>
+    <a href="#" onclick="return false">Collections</a>
+    <a href="#" onclick="return false">Vehicles</a>
+    <a href="#" onclick="return false">Categories</a>
+    <a href="#" onclick="return false">Customer reviews</a>
+    <a href="#" onclick="return false">Car reviews</a>
+    <a href="#" onclick="return false">Affinity companies</a>
+    <a href="#" onclick="return false">Author profiles</a>
+  </div>
+
+  <!-- PAGES SECTION -->
+  <div id="section-pages">
+    <div class="breadcrumb"><a href="#">Dashboard</a> › <a href="#">Content</a> › Pages</div>
+    <div class="page-header">
+      <h1>Pages</h1>
+      <button class="btn-green">Add page</button>
+    </div>
+    <div class="content">
+      <div class="info-bar">
+        <span class="count">You've viewed 10 of 303 results</span>
+        <div class="search-row">
+          <input type="text" placeholder="Search">
+          <button class="btn-search">Search</button>
+          <button class="btn-reset">Reset</button>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Name</th><th>Path</th><th>SEO</th><th>Created</th><th>Actions</th></tr></thead>
+          <tbody>
+            <tr><td><div class="name-cell"><span class="dot amber"></span><a href="#">Select Car Leasing Rugby</a></div></td><td><span class="path">car-leasing-rugby</span></td><td><div class="seo-title">Select Car Leasing Rugby - Select Car Leasing</div><div class="seo-desc">We at Select Car Leasing Rugby pride ourselves on our consistently high levels of customer servic...</div></td><td><span class="time">14 days ago</span></td><td><a class="del">Delete</a></td></tr>
+            <tr><td><div class="name-cell"><span class="dot green"></span><a href="#">Specialist Car Leasing v2</a></div></td><td><span class="path">aepeetuiblan</span></td><td><div class="seo-title">Specialist Car Leasing v2 <span class="badge-tag">NOINDEX</span><span class="badge-tag nofollow">NOFOLLOW</span></div></td><td><span class="time">25 days ago</span></td><td><a class="del">Delete</a></td></tr>
+            <tr><td><div class="name-cell"><span class="dot green"></span><a href="#">Hybrid Car Leasing</a></div></td><td><span class="path">hybrid-car-leasing</span></td><td><div class="seo-title">Hybrid Car Leasing - Select Car Leasing</div><div class="seo-desc">Discover the latest hybrid car lease deals at Select Car Leasing. Competitive monthly rentals on ...</div></td><td><span class="time">1 month ago</span></td><td><a class="del">Delete</a></td></tr>
+            <tr><td><div class="name-cell"><span class="dot green"></span><a href="#">Find My Perfect Car - Select Car Leasing</a></div></td><td><span class="path">find-my-perfect-car</span></td><td><div class="seo-title">Find My Perfect Car - Select Car Leasing <span class="badge-tag">NOINDEX</span><span class="badge-tag nofollow">NOFOLLOW</span></div></td><td><span class="time">2 months ago</span></td><td><a class="del">Delete</a></td></tr>
+            <tr><td><div class="name-cell"><span class="dot green"></span><a href="#">Fleet Brochure</a></div></td><td><span class="path">fleet-brochure</span></td><td><div class="seo-title">Fleet Brochure</div></td><td><span class="time">2 months ago</span></td><td><a class="del">Delete</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="pagination">
+        <button>← Previous</button>
+        <button class="active">1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>4</button>
+        <button>5</button>
+        <button>...</button>
+        <button>31</button>
+        <button>Next →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEWS & REVIEWS SECTION -->
+  <div id="section-newsreviews" style="display:none">
+    <div class="breadcrumb"><a href="#">Dashboard</a> › <a href="#">Content</a> › News &amp; Reviews</div>
+    <div class="page-header">
+      <h1 id="nr-title">News &amp; Reviews</h1>
+      <button class="btn-green" id="nr-add-btn">Add page</button>
+    </div>
+
+    <!-- SUBTABS -->
+    <div class="tabbar">
+      <button class="active" onclick="switchTab('news-homepage',this)">News homepage</button>
+      <button onclick="switchTab('reviews-homepage',this)">Reviews homepage</button>
+      <button onclick="switchTab('combined-homepage',this)">Combined homepage</button>
+      <button onclick="switchTab('news-articles',this)">News articles</button>
+      <button onclick="switchTab('review-articles',this)">Review articles</button>
+    </div>
+
+    <div class="content">
+
+      <!-- NEWS HOMEPAGE -->
+      <div id="tab-news-homepage">
+        <div class="desc-card">
+          <strong>News homepage</strong> — Hard-coded CMS page. URL is locked to <code>/news</code>. This page is predefined as type <strong>news</strong> — no per-component type selection needed.
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Name</th><th>Path</th><th>Type</th><th>SEO</th><th>Created</th><th>Actions</th></tr></thead>
+            <tbody>
+              <tr><td><div class="name-cell"><span class="dot green"></span><a href="#">News Homepage</a></div></td><td><span class="path">news</span></td><td><span class="type-pill news">News</span></td><td><div class="seo-title">Latest Car Leasing News - Select Car Leasing</div><div class="seo-desc">Stay up to date with the latest car leasing news, industry updates and EV announcements...</div></td><td><span class="time">Hard-coded</span></td><td><a class="del">Edit</a></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- REVIEWS HOMEPAGE -->
+      <div id="tab-reviews-homepage" style="display:none">
+        <div class="desc-card">
+          <strong>Reviews homepage</strong> — Hard-coded CMS page. URL is locked to <code>/car-reviews</code>. Predefined as type <strong>review</strong>.
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Name</th><th>Path</th><th>Type</th><th>SEO</th><th>Created</th><th>Actions</th></tr></thead>
+            <tbody>
+              <tr><td><div class="name-cell"><span class="dot green"></span><a href="#">Car Reviews Homepage</a></div></td><td><span class="path">car-reviews</span></td><td><span class="type-pill review">Review</span></td><td><div class="seo-title">Car Leasing Reviews - Select Car Leasing</div><div class="seo-desc">Read expert and customer car leasing reviews from Select Car Leasing...</div></td><td><span class="time">Hard-coded</span></td><td><a class="del">Edit</a></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- COMBINED HOMEPAGE -->
+      <div id="tab-combined-homepage" style="display:none">
+        <div class="desc-card">
+          <strong>Combined homepage</strong> — Hard-coded CMS page. URL is locked to <code>/news-and-reviews</code>. Surfaces both news and review content together. Predefined as type <strong>combined</strong>.
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Name</th><th>Path</th><th>Type</th><th>SEO</th><th>Created</th><th>Actions</th></tr></thead>
+            <tbody>
+              <tr><td><div class="name-cell"><span class="dot amber"></span><a href="#">News &amp; Reviews Homepage</a></div></td><td><span class="path">news-and-reviews</span></td><td><span class="type-pill news">Combined</span></td><td><div class="seo-title">Car Leasing News &amp; Reviews - Select Car Leasing</div><div class="seo-desc">Your hub for the latest car leasing news and in-depth vehicle reviews...</div></td><td><span class="time">Hard-coded</span></td><td><a class="del">Edit</a></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- NEWS ARTICLES -->
+      <div id="tab-news-articles" style="display:none">
+        <div class="info-bar">
+          <span class="count">You've viewed 10 of 3,010 results</span>
+          <div class="search-row">
+            <input type="text" placeholder="Search news articles">
+            <button class="btn-search">Search</button>
+            <button class="btn-reset">Reset</button>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Name</th><th>Path</th><th>Type</th><th>Category</th><th>SEO</th><th>Created</th><th>Actions</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><div class="name-cell"><span class="dot amber"></span><a href="#">Incoming Skoda Peaq revealed in full</a></div></td>
+                <td><span class="path">skoda-peaq-full-reveal-uk</span></td>
+                <td><span class="type-pill news">News</span></td>
+                <td></td>
+                <td><div class="seo-title">Incoming Skoda Peaq revealed in full</div></td>
+                <td><span class="time">14 minutes ago</span></td>
+                <td><a class="del">Delete</a></td>
+              </tr>
+              <tr>
+                <td><div class="name-cell"><span class="dot green"></span><a href="#">The best electric hot hatchbacks to lease right now</a></div></td>
+                <td><span class="path">best-top-10-electric-hot-hatchbacks-2026</span></td>
+                <td><span class="type-pill news">News</span></td>
+                <td><div style="font-size:12px;color:#b8860b;line-height:1.8">LATEST CAR NEWS<br>ELECTRIC CAR NEWS<br>DRIVING GUIDE<br>FUN INTERESTING FACTS<br>INDUSTRY UPDATES</div></td>
+                <td><div class="seo-title">The best electric hot hatchbacks to lease in 2026 - Select Car Leasing</div><div class="seo-desc">Electric hot hatches are making headlines in 2026 - and here's our pick of the Top 10 blistering ...</div></td>
+                <td><span class="time">1 day ago</span></td>
+                <td><a class="del">Delete</a></td>
+              </tr>
+              <tr>
+                <td><div class="name-cell"><span class="dot amber"></span><a href="#">Volkswagen Caddy gets refresh with improved cabin and bigger screen</a></div></td>
+                <td><span class="path">volkswagen-caddy-gets-refresh-with-improved-cabin-and-bigger-screen</span></td>
+                <td><span class="type-pill news">News</span></td>
+                <td></td>
+                <td><div class="seo-title">Volkswagen Caddy gets refresh with improved cabin and bigger screen</div></td>
+                <td><span class="time">3 days ago</span></td>
+                <td><a class="del">Delete</a></td>
+              </tr>
+              <tr>
+                <td><div class="name-cell"><span class="dot amber"></span><a href="#">MAN launches TGE 10 Year Edition to mark van's anniversary</a></div></td>
+                <td><span class="path">man-launches-tge-10-year-edition-to-mark-vans-anniversary</span></td>
+                <td><span class="type-pill news">News</span></td>
+                <td></td>
+                <td><div class="seo-title">MAN launches TGE 10 Year Edition to mark van's anniversary</div></td>
+                <td><span class="time">3 days ago</span></td>
+                <td><a class="del">Delete</a></td>
+              </tr>
+              <tr>
+                <td><div class="name-cell"><span class="dot amber"></span><a href="#">Could Chery Stockman PHEV pickup rival to the Ford Ranger and BYD Shark?</a></div></td>
+                <td><span class="path">could-chery-stockman-phev-pickup-rival-to-the-ford-ranger-and-byd-shark</span></td>
+                <td><span class="type-pill news">News</span></td>
+                <td></td>
+                <td><div class="seo-title">Could Chery Stockman PHEV pickup rival to the Ford Ranger and BYD Shark?</div></td>
+                <td><span class="time">3 days ago</span></td>
+                <td><a class="del">Delete</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="pagination">
+          <button>← Previous</button>
+          <button class="active">1</button>
+          <button>2</button>
+          <button>3</button>
+          <button>4</button>
+          <button>5</button>
+          <button>...</button>
+          <button>301</button>
+          <button>Next →</button>
+        </div>
+      </div>
+
+      <!-- REVIEW ARTICLES -->
+      <div id="tab-review-articles" style="display:none">
+        <div class="info-bar">
+          <span class="count">You've viewed 10 of 847 results</span>
+          <div class="search-row">
+            <input type="text" placeholder="Search review articles">
+            <button class="btn-search">Search</button>
+            <button class="btn-reset">Reset</button>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Name</th><th>Path</th><th>Type</th><th>SEO</th><th>Created</th><th>Actions</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><div class="name-cell"><span class="dot green"></span><a href="#">Tesla Model Y Long Range Review</a></div></td>
+                <td><span class="path">tesla-model-y-long-range-review</span></td>
+                <td><span class="type-pill review">Review</span></td>
+                <td><div class="seo-title">Tesla Model Y Long Range Review - Select Car Leasing</div><div class="seo-desc">Is the Tesla Model Y Long Range still the best electric SUV to lease? We put it to the test...</div></td>
+                <td><span class="time">2 days ago</span></td>
+                <td><a class="del">Delete</a></td>
+              </tr>
+              <tr>
+                <td><div class="name-cell"><span class="dot green"></span><a href="#">BMW i4 eDrive40 Review</a></div></td>
+                <td><span class="path">bmw-i4-edrive40-review</span></td>
+                <td><span class="type-pill review">Review</span></td>
+                <td><div class="seo-title">BMW i4 eDrive40 Review - Select Car Leasing</div><div class="seo-desc">The BMW i4 eDrive40 brings genuine driver appeal to the EV sector. Here's our full lease review...</div></td>
+                <td><span class="time">1 week ago</span></td>
+                <td><a class="del">Delete</a></td>
+              </tr>
+              <tr>
+                <td><div class="name-cell"><span class="dot amber"></span><a href="#">Kia EV6 GT Review</a></div></td>
+                <td><span class="path">kia-ev6-gt-review</span></td>
+                <td><span class="type-pill review">Review</span></td>
+                <td><div class="seo-title">Kia EV6 GT Review - Select Car Leasing</div><div class="seo-desc">The quickest Kia ever made. But is the EV6 GT worth leasing? Our reviewers find out...</div></td>
+                <td><span class="time">2 weeks ago</span></td>
+                <td><a class="del">Delete</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="pagination">
+          <button>← Previous</button>
+          <button class="active">1</button>
+          <button>2</button>
+          <button>3</button>
+          <button>...</button>
+          <button>85</button>
+          <button>Next →</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  function switchSection(section) {
+    document.getElementById('section-pages').style.display = section === 'pages' ? '' : 'none';
+    document.getElementById('section-newsreviews').style.display = section === 'newsreviews' ? '' : 'none';
+    document.querySelectorAll('#subnav a').forEach(a => a.classList.remove('active'));
+    document.getElementById('nav-' + section).classList.add('active');
+  }
+
+  function switchTab(tabId, btn) {
+    const tabs = ['news-homepage','reviews-homepage','combined-homepage','news-articles','review-articles'];
+    tabs.forEach(t => document.getElementById('tab-' + t).style.display = 'none');
+    document.getElementById('tab-' + tabId).style.display = '';
+    document.querySelectorAll('.tabbar button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const titles = {
+      'news-homepage': 'News homepage',
+      'reviews-homepage': 'Reviews homepage',
+      'combined-homepage': 'Combined homepage',
+      'news-articles': 'News articles',
+      'review-articles': 'Review articles'
+    };
+    document.getElementById('nr-title').textContent = titles[tabId];
+    document.getElementById('nr-add-btn').style.display = ['news-articles','review-articles'].includes(tabId) ? '' : 'none';
+  }
+</script>
