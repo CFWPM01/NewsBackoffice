@@ -70,8 +70,120 @@
   .desc-card code { background: #f5f5f5; border: 1px solid #e0e0e0; border-radius: 3px; padding: 1px 5px; font-size: 12px; }
 
   .avatar { width: 28px; height: 28px; border-radius: 50%; background: #ddd; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: #666; flex-shrink: 0; }
+
+  /* ---- Page builder ---- */
+  #nr-builder-view { display:none; }
+  .builder-topbar { display:flex; align-items:center; justify-content:space-between; padding:14px 24px; background:#fff; border-bottom:1px solid #e0e0e0; }
+  .builder-topbar .back-link { color:#b8860b; text-decoration:none; font-size:13px; cursor:pointer; }
+  .builder-topbar .back-link:hover { text-decoration:underline; }
+  .builder-actions { display:flex; align-items:center; gap:16px; }
+  .builder-actions a { color:#b8860b; font-size:13px; text-decoration:none; }
+  .builder-hint { padding:10px 24px; font-size:12px; color:#888; background:#fffde7; border-bottom:1px solid #ffe082; }
+
+  .builder-canvas { background:#152238; padding:28px; margin:20px 24px 40px; border-radius:8px; }
+  .builder-zone { min-height: 36px; border-radius:6px; transition: background .15s; }
+  .builder-zone.drop-active { background: rgba(76,175,80,0.12); outline: 2px dashed #4caf50; }
+  .zone-columns { display:flex; gap:20px; align-items:flex-start; }
+  .col-main { flex: 2; min-width:0; }
+  .col-side { flex: 1; min-width:0; background:#fff; border-radius:6px; padding:16px; }
+
+  .cms-block { position:relative; border:2px dashed #e53935; border-radius:6px; padding:18px 16px 16px; margin-bottom:18px; cursor:pointer; background: rgba(255,255,255,0.04); }
+  .col-side .cms-block { background:#f7f7f7; }
+  .cms-block:last-child { margin-bottom:0; }
+  .cms-block:hover { background: rgba(255,255,255,0.09); }
+  .col-side .cms-block:hover { background:#eee; }
+  .cms-block.dragging { opacity:.35; }
+  .cms-block .block-tag { position:absolute; top:-13px; left:14px; background:#111; color:#fff; font-size:10.5px; font-weight:600; padding:3px 9px; border-radius:10px; display:flex; align-items:center; gap:6px; letter-spacing:.2px; }
+  .cms-block .drag-handle { cursor:grab; color:#fff; opacity:.6; font-size:13px; }
+  .col-side .cms-block .drag-handle { color:#555; }
+  .cms-block .drag-handle:active { cursor:grabbing; }
+
+  .hero-mock { display:flex; gap:18px; }
+  .hero-mock .img-ph { flex:0 0 240px; height:150px; border-radius:6px; background:linear-gradient(135deg,#3a4a63,#1d2b40); }
+  .hero-mock .hero-text h3 { color:#fff; font-size:17px; margin-bottom:8px; }
+  .hero-mock .hero-text p { color:#b7c0cd; font-size:12.5px; line-height:1.5; }
+
+  .pair-mock { display:flex; gap:14px; }
+  .pair-mock .pair-card { flex:1; }
+  .pair-mock .pair-card .img-ph { height:90px; border-radius:6px; background:linear-gradient(135deg,#3a4a63,#1d2b40); margin-bottom:8px; }
+  .pair-mock .pair-card h4 { color:#fff; font-size:13px; }
+
+  .feed-mock .feed-row { display:flex; gap:10px; align-items:center; padding:7px 0; border-bottom:1px solid #e6e6e6; }
+  .feed-mock .feed-row:last-child { border-bottom:none; }
+  .feed-mock .img-ph { flex:0 0 46px; height:36px; border-radius:4px; background:#cfd8e3; }
+  .feed-mock .feed-title { font-size:12.5px; color:#222; font-weight:500; }
+  .feed-mock .feed-meta { font-size:10.5px; color:#999; }
+
+  .banner-mock { display:flex; align-items:center; justify-content:space-between; background:#fff; border-radius:6px; padding:16px 20px; }
+  .banner-mock .banner-text h4 { font-size:15px; color:#111; margin-bottom:3px; }
+  .banner-mock .banner-text p { font-size:12px; color:#777; }
+  .banner-mock .banner-btn { background:#b8860b; color:#fff; border:none; padding:9px 16px; border-radius:4px; font-size:12.5px; font-weight:600; }
+
+  .empty-zone-label { text-align:center; color:#5a6b82; font-size:11.5px; padding:10px; border:1px dashed #3a4a63; border-radius:6px; }
+
+  .section-mock-head { display:flex; align-items:baseline; justify-content:space-between; margin-bottom:12px; gap:12px; }
+  .section-mock-head h3 { color:#fff; font-size:16px; }
+  .col-side .section-mock-head h3 { color:#111; }
+  .section-mock-viewall { color:#8fb8ff; font-size:11.5px; text-decoration:underline; white-space:nowrap; }
+  .col-side .section-mock-viewall { color:#b8860b; }
+  .section-mock-grid { display:flex; gap:10px; flex-wrap:wrap; }
+  .section-mock-card { flex:1 1 90px; min-width:90px; }
+  .img-ph-sm { height:56px; border-radius:5px; background:linear-gradient(135deg,#3a4a63,#1d2b40); margin-bottom:6px; }
+  .col-side .img-ph-sm { background:#cfd8e3; }
+  .section-mock-card-title { font-size:11px; color:#dbe3ee; line-height:1.3; }
+  .col-side .section-mock-card-title { color:#333; }
+  .section-mock-more { margin-top:10px; font-size:11px; color:#8fa1bd; font-style:italic; }
+  .col-side .section-mock-more { color:#999; }
+
+  .newsletter-mock { background:#fff; border-radius:6px; padding:18px 20px; }
+  .newsletter-mock h4 { font-size:15px; color:#111; margin-bottom:4px; line-height:1.35; }
+  .newsletter-mock p { font-size:11.5px; color:#777; margin-bottom:12px; }
+  .newsletter-fields { display:flex; gap:10px; flex-wrap:wrap; }
+  .newsletter-fields input { flex:1; min-width:140px; border:1px solid #ddd; border-radius:4px; padding:8px 10px; font-size:12px; background:#f7f7f7; }
+
+  .btn-undo { background:#fff; color:#555; border:1px solid #ccc; padding:8px 14px; border-radius:4px; font-size:13px; cursor:pointer; }
+  .btn-undo:hover:not(:disabled) { background:#f5f5f5; color:#222; }
+  .btn-undo:disabled { opacity:.4; cursor:not-allowed; }
+
+  /* ---- App shell (lets the manage panel push the page over, not float on top) ---- */
+  #app-shell { display:flex; align-items:stretch; min-height:100vh; }
+  #app-main { flex:1; min-width:0; }
+
+  /* ---- Manage panel: docked column, not an overlay ---- */
+  .manage-panel { width:0; flex-shrink:0; overflow:hidden; background:#faf7f0; box-shadow:-6px 0 24px rgba(0,0,0,.12); transition:width .22s ease; }
+  .manage-panel.open { width:680px; max-width:60vw; }
+  .manage-panel .panel-inner { width:680px; height:100%; overflow-y:auto; }
+  .panel-topbar { display:flex; align-items:center; justify-content:space-between; padding:18px 28px; }
+  .panel-topbar .panel-close { cursor:pointer; color:#888; font-size:13px; }
+  .panel-topbar .panel-right { display:flex; align-items:center; gap:20px; }
+  .panel-topbar .panel-right a { color:#b8860b; font-size:13px; text-decoration:none; }
+  .btn-publish { background:#5a8a5a; color:#fff; border:none; padding:9px 18px; border-radius:4px; font-size:13px; font-weight:500; cursor:pointer; }
+  .panel-body { padding:0 28px 28px; }
+  .panel-body h2 { font-size:20px; margin-bottom:18px; }
+  .panel-card { background:#f2ede3; border-radius:6px; padding:20px; margin-bottom:18px; }
+  .panel-card label.field-label { display:block; font-size:12.5px; font-weight:600; color:#333; margin-bottom:8px; }
+  .panel-card input[type=text], .panel-card textarea { width:100%; border:1px solid #d8d0bf; border-radius:4px; padding:9px 11px; font-size:13px; background:#fff; }
+  .panel-card textarea { resize:vertical; min-height:60px; }
+  .panel-card .field-note { font-size:11.5px; color:#8a8272; margin-bottom:12px; line-height:1.5; }
+  .radio-row { display:flex; gap:22px; }
+  .radio-row label { display:flex; align-items:center; gap:6px; font-size:13px; color:#333; cursor:pointer; }
+  .panel-table { width:100%; border-collapse:collapse; background:#fff; border-radius:4px; overflow:hidden; }
+  .panel-table th { text-align:left; font-size:11.5px; color:#666; padding:9px 12px; border-bottom:1px solid #eee; }
+  .panel-table td { padding:10px 12px; font-size:12.5px; vertical-align:top; border-bottom:1px solid #f2f2f2; }
+  .panel-table tr:last-child td { border-bottom:none; }
+  .panel-table .row-summary { color:#888; font-size:11.5px; margin-top:3px; }
+  .panel-table .row-actions a { color:#b8860b; font-size:12px; text-decoration:none; margin-right:8px; cursor:pointer; }
+  .panel-table .row-actions .row-del { color:#c62828; }
+  .panel-max-note { font-size:11.5px; color:#8a8272; font-style:italic; margin-top:10px; }
+  .add-article-row { display:flex; gap:8px; margin-top:12px; }
+  .add-article-row input { flex:1; }
+  .btn-add-small { background:#7a6a2e; color:#fff; border:none; padding:9px 14px; border-radius:4px; font-size:12.5px; cursor:pointer; white-space:nowrap; }
+  .panel-footer { display:flex; justify-content:flex-end; padding:4px 0 30px; }
+  .btn-save { background:#5a8a5a; color:#fff; border:none; padding:10px 22px; border-radius:4px; font-size:13.5px; font-weight:500; cursor:pointer; }
 </style>
 
+<div id="app-shell">
+<div id="app-main">
 <div class="wrap">
   <!-- TOP NAV -->
   <div class="topnav">
@@ -125,6 +237,7 @@
 
   <!-- NEWS & REVIEWS SECTION -->
   <div id="section-newsreviews">
+   <div id="nr-main-view">
     <!-- SUBTAB BAR (second nav, no third bar) -->
     <div class="subnav" id="nr-subnav">
       <a onclick="switchTab('news-articles', this)" class="active">News articles</a>
@@ -135,13 +248,13 @@
       <a onclick="switchTab('author-profiles', this)">Author profiles</a>
     </div>
 
-    <div class="breadcrumb"><a href="#">Dashboard</a> › <a href="#">News &amp; Reviews</a> › <span id="breadcrumb-tab">News articles</span></div>
-    <div class="page-header">
+    <div class="breadcrumb" id="nr-breadcrumb"><a href="#">Dashboard</a> › <a href="#">News &amp; Reviews</a> › <span id="breadcrumb-tab">News articles</span></div>
+    <div class="page-header" id="nr-page-header">
       <h1 id="nr-title">News articles</h1>
       <button class="btn-green" id="nr-add-btn">Add page</button>
     </div>
 
-    <div class="content">
+    <div class="content" id="nr-content">
 
       <!-- NEWS ARTICLES -->
       <div id="tab-news-articles">
@@ -190,7 +303,7 @@
           <table>
             <thead><tr><th>Name</th><th>Path</th><th>Type</th><th>SEO</th><th>Created</th><th>Actions</th></tr></thead>
             <tbody>
-              <tr><td><div class="name-cell"><span class="dot green"></span><a href="#">News Homepage</a></div></td><td><span class="path">news</span></td><td><span class="type-pill news">News</span></td><td><div class="seo-title">Latest Car Leasing News - Select Car Leasing</div><div class="seo-desc">Stay up to date with the latest car leasing news, industry updates and EV announcements...</div></td><td><span class="time">Hard-coded</span></td><td><a class="del">Edit</a></td></tr>
+              <tr><td><div class="name-cell"><span class="dot green"></span><a href="#">News Homepage</a></div></td><td><span class="path">news</span></td><td><span class="type-pill news">News</span></td><td><div class="seo-title">Latest Car Leasing News - Select Car Leasing</div><div class="seo-desc">Stay up to date with the latest car leasing news, industry updates and EV announcements...</div></td><td><span class="time">Hard-coded</span></td><td><a class="del" onclick="openPageBuilder(); return false;">Edit</a></td></tr>
             </tbody>
           </table>
         </div>
@@ -203,7 +316,7 @@
           <table>
             <thead><tr><th>Name</th><th>Path</th><th>Type</th><th>SEO</th><th>Created</th><th>Actions</th></tr></thead>
             <tbody>
-              <tr><td><div class="name-cell"><span class="dot green"></span><a href="#">Car Reviews Homepage</a></div></td><td><span class="path">car-reviews</span></td><td><span class="type-pill review">Review</span></td><td><div class="seo-title">Car Leasing Reviews - Select Car Leasing</div><div class="seo-desc">Read expert and customer car leasing reviews from Select Car Leasing...</div></td><td><span class="time">Hard-coded</span></td><td><a class="del">Edit</a></td></tr>
+              <tr><td><div class="name-cell"><span class="dot green"></span><a href="#">Car Reviews Homepage</a></div></td><td><span class="path">car-reviews</span></td><td><span class="type-pill review">Review</span></td><td><div class="seo-title">Car Leasing Reviews - Select Car Leasing</div><div class="seo-desc">Read expert and customer car leasing reviews from Select Car Leasing...</div></td><td><span class="time">Hard-coded</span></td><td><a class="del" onclick="openPageBuilder(); return false;">Edit</a></td></tr>
             </tbody>
           </table>
         </div>
@@ -216,7 +329,7 @@
           <table>
             <thead><tr><th>Name</th><th>Path</th><th>Type</th><th>SEO</th><th>Created</th><th>Actions</th></tr></thead>
             <tbody>
-              <tr><td><div class="name-cell"><span class="dot amber"></span><a href="#">News &amp; Reviews Homepage</a></div></td><td><span class="path">news-and-reviews</span></td><td><span class="type-pill combined">Combined</span></td><td><div class="seo-title">Car Leasing News &amp; Reviews - Select Car Leasing</div><div class="seo-desc">Your hub for the latest car leasing news and in-depth vehicle reviews...</div></td><td><span class="time">Hard-coded</span></td><td><a class="del">Edit</a></td></tr>
+              <tr><td><div class="name-cell"><span class="dot amber"></span><a href="#">News &amp; Reviews Homepage</a></div></td><td><span class="path">news-and-reviews</span></td><td><span class="type-pill combined">Combined</span></td><td><div class="seo-title">Car Leasing News &amp; Reviews - Select Car Leasing</div><div class="seo-desc">Your hub for the latest car leasing news and in-depth vehicle reviews...</div></td><td><span class="time">Hard-coded</span></td><td><a class="del" onclick="openPageBuilder(); return false;">Edit</a></td></tr>
             </tbody>
           </table>
         </div>
@@ -243,6 +356,32 @@
       </div>
 
     </div>
+   </div><!-- /nr-main-view -->
+
+   <div id="nr-builder-view">
+     <div class="builder-topbar">
+       <a class="back-link" onclick="closePageBuilder(); return false;">← Back to <span id="builder-back-label">Combined homepage</span></a>
+       <div class="builder-actions">
+         <button class="btn-undo" id="btn-undo" onclick="undoLastChange()" disabled>↺ Undo</button>
+         <a href="#" onclick="return false">Preview on Car leasing</a>
+         <button class="btn-publish" onclick="publishPage()">Publish</button>
+       </div>
+     </div>
+     <div class="breadcrumb">
+       <a href="#">Dashboard</a> › <a href="#">News &amp; Reviews</a> › <a href="#" onclick="closePageBuilder(); return false;" id="builder-breadcrumb-origin">Combined homepage</a> › <span id="builder-page-name">News &amp; Reviews Homepage</span>
+     </div>
+     <div class="builder-hint">Drag a component (grab it anywhere) to reorder it or move it into a different column. Click a component to manage what's inside it.</div>
+
+     <div class="builder-canvas">
+       <div class="builder-zone" id="zone-top" data-zone="top"></div>
+       <div class="zone-columns">
+         <div class="builder-zone col-main" id="zone-main" data-zone="main"></div>
+         <div class="builder-zone col-side" id="zone-side" data-zone="side"></div>
+       </div>
+       <div class="builder-zone" id="zone-bottom" data-zone="bottom" style="margin-top:18px;"></div>
+     </div>
+   </div><!-- /nr-builder-view -->
+
   </div>
 
   <!-- PLACEHOLDER for other top nav sections -->
@@ -250,7 +389,23 @@
     <div class="content" style="padding-top:40px;text-align:center;color:#aaa;font-size:13px">Select a section from the top navigation</div>
   </div>
 
+</div><!-- /app-main-inner -->
+</div><!-- /app-main -->
+
+<div class="manage-panel" id="manage-panel">
+  <div class="panel-inner">
+    <div class="panel-topbar">
+      <span class="panel-close" onclick="closeManagePanel()">✕ Close</span>
+      <div class="panel-right">
+        <a href="#" onclick="return false">Preview on Car leasing</a>
+        <button class="btn-publish" onclick="publishPage()">Publish</button>
+      </div>
+    </div>
+    <div class="panel-body" id="panel-body"><!-- rendered by JS --></div>
+  </div>
 </div>
+
+</div><!-- /app-shell -->
 
 <script>
   const topSections = ['content','newsreviews','deals','vehicles','users','redirects'];
@@ -293,4 +448,387 @@
     document.getElementById('breadcrumb-tab').textContent = tabTitles[tabId];
     document.getElementById('nr-add-btn').style.display = hiddenAddBtn.includes(tabId) ? 'none' : '';
   }
+
+  // ---------------- PAGE BUILDER ----------------
+  const blockDefs = {
+    hero: {
+      id:'hero', tag:'Hero component (1 image + text)', kind:'articles', max:1, contentType:'news', ctypeOptions:['news','review'],
+      heading:'Hyundai Kona triumphs at Auto Express awards',
+      articles:[
+        {title:'Hyundai Kona triumphs at Auto Express awards', summary:"Hyundai is celebrating a big win after its Kona SUV was handed the coveted Car of the Year prize at the Auto Express New Car Awards."}
+      ]
+    },
+    pair: {
+      id:'pair', tag:'Feature pair (2 components)', kind:'articles', max:2, contentType:'review', ctypeOptions:['news','review'],
+      heading:'Featured pair',
+      articles:[
+        {title:'Volkswagen Amarok V6 Pick-up Review', summary:'A capable, comfortable pick-up — but does the V6 justify the price jump?'},
+        {title:'Porsche Taycan video review', summary:"Our video verdict on Porsche's all-electric performance saloon."}
+      ]
+    },
+    feed: {
+      id:'feed', tag:'Sidebar feed (up to 6 items)', kind:'articles', max:6, contentType:'mixed', ctypeOptions:['news','review','mixed'],
+      heading:'Featured news & reviews',
+      articles:[
+        {title:'Top 6 cars arriving this summer', summary:'Opinion — By Neil Goodwin'},
+        {title:'Hyundai Kona triumphs at Auto Express awards', summary:'New EV model — By Neil Goodwin'},
+        {title:'Honda Civic Type R review', summary:'3.5/5 stars — By Neil Goodwin'},
+        {title:'Jeep Avenger review (2023)', summary:'3/5 stars — By Neil Goodwin'},
+        {title:'Kia EV6 video review', summary:'New EV model — video'},
+        {title:'Cupra Born video review', summary:'New EV model — video'}
+      ]
+    },
+    banner: {
+      id:'banner', tag:'Promo banner (rectangle)', kind:'banner',
+      heading:'Looking for van news and reviews instead?',
+      subtext:'No problem! Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      buttonLabel:'VAN NEWS & REVIEWS', buttonLink:'/van-news-and-reviews'
+    },
+    videoReviews: {
+      id:'videoReviews', tag:'Video reviews section', kind:'section', max:4, contentType:'video', ctypeOptions:['video'],
+      heading:'Video reviews', viewAllLabel:'View all reviews',
+      articles:[
+        {title:'Hyundai Ioniq 5 Video Review', summary:'Featured video — Electric, Hyundai'},
+        {title:'Kia EV6 video review', summary:'New EV model'},
+        {title:'Cupra Born video review', summary:'New EV model'}
+      ]
+    },
+    latestReviews: {
+      id:'latestReviews', tag:'Latest reviews section', kind:'section', max:8, contentType:'review', ctypeOptions:['review'],
+      heading:'Latest reviews', viewAllLabel:'View all reviews',
+      articles:[
+        {title:'Smart #1 review', summary:'3.8/5 stars — Forget tiny city cars; Smart has reinvented itself as a maker of electric SUVs.'},
+        {title:'Skoda Kamiq review (2023)', summary:'3.8/5 stars'},
+        {title:'Volkswagen Amarok V6 pick-up review', summary:'3.8/5 stars'},
+        {title:'Toyota Hilux GR Sport pick-up review', summary:'4/5 stars'},
+        {title:'Alfa Romeo Tonale plug-in hybrid (2023)', summary:'4/5 stars'},
+        {title:'Alfa Romeo Giulia Saloon review (2023)', summary:'4/5 stars'},
+        {title:'Honda Civic Type R review', summary:'4/5 stars'},
+        {title:'Kia Soul EV review 2023', summary:'4/5 stars'}
+      ]
+    },
+    popularReads: {
+      id:'popularReads', tag:'Popular reads section', kind:'section', max:4, contentType:'mixed', ctypeOptions:['news','review','mixed'],
+      heading:'Popular reads', viewAllLabel:'View all',
+      articles:[
+        {title:"Holiday car crime UK - because criminals don't take a vacation!", summary:'Feature — By Neil Goodwin'},
+        {title:'Caterham unveils all-electric Project V', summary:'Car news — New EV model'},
+        {title:"New Aston Martin Valour is 'old school brute'", summary:'Feature'},
+        {title:'Tesla Model Y RWD: Everything you need to know', summary:'New EV model'}
+      ]
+    },
+    latestNews: {
+      id:'latestNews', tag:'Latest news section', kind:'section', max:9, contentType:'news', ctypeOptions:['news'],
+      heading:'Latest news', viewAllLabel:'View all reviews',
+      articles:[
+        {title:'Major update for Peugeot 208 and E-208', summary:'Car news — New EV model'},
+        {title:'First look at new VW T-Cross', summary:'Car news'},
+        {title:"Dacia steers 'Europe's most affordable electric car' to UK", summary:'Electric — Dacia'},
+        {title:'Top 6 cars arriving this summer', summary:'Opinion'},
+        {title:'The UK Campervan Holiday Index', summary:'Opinion'},
+        {title:'Alpine launches F1-inspired A110 S Enstone Edition', summary:'Specialist'},
+        {title:'Hyundai Kona triumphs at Auto Express awards', summary:'New EV model'},
+        {title:'MG4 EV XPOWER breaks cover', summary:'New EV model'},
+        {title:'Bold new look for Kia Picanto', summary:'New model'}
+      ]
+    },
+    newsletterSignup: {
+      id:'newsletterSignup', tag:'Newsletter signup', kind:'newsletter',
+      heading:'Sign up to get the latest Select news and reviews straight to your inbox!',
+      subtext:'By submitting your details you are agreeing to receive marketing communication from us. Please see our data privacy policy here.',
+      namePlaceholder:'Full name', emailPlaceholder:'Email address', buttonLabel:'SIGN UP NOW'
+    }
+  };
+
+  let zones = { top: [], main:['hero','pair'], side:['feed'], bottom:['banner','videoReviews','latestReviews','popularReads','latestNews','newsletterSignup'] };
+  let dragBlockId = null;
+
+  let builderOriginTab = 'combined-homepage';
+  const builderPageNames = {
+    'news-homepage': 'News Homepage',
+    'reviews-homepage': 'Car Reviews Homepage',
+    'combined-homepage': 'News & Reviews Homepage'
+  };
+
+  function openPageBuilder(){
+    const activeLink = document.querySelector('#nr-subnav a.active');
+    if (activeLink) {
+      const found = Object.keys(tabTitles).find(t => tabTitles[t] === activeLink.textContent.trim());
+      if (found) builderOriginTab = found;
+    }
+    document.getElementById('builder-back-label').textContent = tabTitles[builderOriginTab];
+    document.getElementById('builder-breadcrumb-origin').textContent = tabTitles[builderOriginTab];
+    document.getElementById('builder-page-name').textContent = builderPageNames[builderOriginTab] || tabTitles[builderOriginTab];
+    document.getElementById('nr-main-view').style.display = 'none';
+    document.getElementById('nr-builder-view').style.display = 'block';
+    renderBuilder();
+  }
+  function closePageBuilder(){
+    document.getElementById('nr-builder-view').style.display = 'none';
+    document.getElementById('nr-main-view').style.display = '';
+    closeManagePanel();
+    const originLink = Array.from(document.querySelectorAll('#nr-subnav a')).find(a => a.textContent.trim() === tabTitles[builderOriginTab]);
+    if (originLink) switchTab(builderOriginTab, originLink);
+  }
+
+  function blockMockHtml(b){
+    if (b.kind === 'newsletter') {
+      return '<div class="newsletter-mock"><h4>' + b.heading + '</h4><p>' + b.subtext + '</p>' +
+        '<div class="newsletter-fields"><input placeholder="' + b.namePlaceholder + '" disabled><input placeholder="' + b.emailPlaceholder + '" disabled>' +
+        '<button class="banner-btn" type="button">' + b.buttonLabel + '</button></div></div>';
+    }
+    if (b.kind === 'banner') {
+      return '<div class="banner-mock"><div class="banner-text"><h4>' + b.heading + '</h4><p>' + b.subtext + '</p></div><button class="banner-btn" type="button">' + b.buttonLabel + '</button></div>';
+    }
+    if (b.kind === 'section') {
+      return '<div class="section-mock">' +
+        '<div class="section-mock-head"><h3>' + b.heading + '</h3><span class="section-mock-viewall">' + (b.viewAllLabel || 'View all') + ' →</span></div>' +
+        '<div class="section-mock-grid">' +
+          b.articles.slice(0,4).map(a => '<div class="section-mock-card"><div class="img-ph-sm"></div><div class="section-mock-card-title">' + a.title + '</div></div>').join('') +
+        '</div>' +
+        (b.articles.length > 4 ? '<div class="section-mock-more">+ ' + (b.articles.length - 4) + ' more item' + (b.articles.length - 4 > 1 ? 's' : '') + ' in this list</div>' : '') +
+      '</div>';
+    }
+    if (b.id === 'hero') {
+      const a = b.articles[0] || {title:'(no article selected)', summary:''};
+      return '<div class="hero-mock"><div class="img-ph"></div><div class="hero-text"><h3>' + a.title + '</h3><p>' + a.summary + '</p></div></div>';
+    }
+    if (b.id === 'pair') {
+      return '<div class="pair-mock">' + b.articles.slice(0,2).map(a => '<div class="pair-card"><div class="img-ph"></div><h4>' + a.title + '</h4></div>').join('') + '</div>';
+    }
+    return '<div class="feed-mock">' + b.articles.slice(0,6).map(a => '<div class="feed-row"><div class="img-ph"></div><div><div class="feed-title">' + a.title + '</div><div class="feed-meta">' + a.summary + '</div></div></div>').join('') + '</div>';
+  }
+
+  function blockHtml(id){
+    const b = blockDefs[id];
+    return '<div class="cms-block" draggable="true" data-block="' + id + '" ' +
+      'ondragstart="onBlockDragStart(event,\'' + id + '\')" ondragend="onBlockDragEnd(event)" ' +
+      'onclick="openManagePanel(\'' + id + '\')">' +
+      '<span class="block-tag"><span class="drag-handle">⠿</span> ' + b.tag + '</span>' +
+      blockMockHtml(b) +
+      '</div>';
+  }
+
+  function renderZoneList(zoneName){
+    const ids = zones[zoneName];
+    if (!ids.length) return '<div class="empty-zone-label">Drop a component here</div>';
+    return ids.map(blockHtml).join('');
+  }
+
+  function renderBuilder(){
+    document.getElementById('zone-top').innerHTML = renderZoneList('top');
+    document.getElementById('zone-main').innerHTML = renderZoneList('main');
+    document.getElementById('zone-side').innerHTML = renderZoneList('side');
+    document.getElementById('zone-bottom').innerHTML = renderZoneList('bottom');
+  }
+
+  function onBlockDragStart(e, id){
+    dragBlockId = id;
+    e.target.classList.add('dragging');
+    e.dataTransfer.effectAllowed = 'move';
+    try { e.dataTransfer.setData('text/plain', id); } catch(err){}
+  }
+  function onBlockDragEnd(e){
+    e.target.classList.remove('dragging');
+    document.querySelectorAll('.builder-zone').forEach(z => z.classList.remove('drop-active'));
+  }
+
+  function setupZoneDnD(){
+    document.querySelectorAll('.builder-zone').forEach(zoneEl => {
+      zoneEl.addEventListener('dragover', e => {
+        e.preventDefault();
+        zoneEl.classList.add('drop-active');
+      });
+      zoneEl.addEventListener('dragleave', () => zoneEl.classList.remove('drop-active'));
+      zoneEl.addEventListener('drop', e => {
+        e.preventDefault();
+        zoneEl.classList.remove('drop-active');
+        if (!dragBlockId) return;
+        const targetZone = zoneEl.dataset.zone;
+        moveBlockToZone(dragBlockId, targetZone, e);
+        dragBlockId = null;
+      });
+    });
+  }
+
+  // ---------------- UNDO HISTORY ----------------
+  let changeHistory = [];
+  function pushHistory(){
+    changeHistory.push(JSON.stringify({ zones, blockDefs }));
+    updateUndoButton();
+  }
+  function undoLastChange(){
+    if (!changeHistory.length) return;
+    const prev = JSON.parse(changeHistory.pop());
+    zones = prev.zones;
+    Object.keys(prev.blockDefs).forEach(k => { blockDefs[k] = prev.blockDefs[k]; });
+    renderBuilder();
+    closeManagePanel();
+    updateUndoButton();
+  }
+  function updateUndoButton(){
+    const btn = document.getElementById('btn-undo');
+    if (btn) btn.disabled = changeHistory.length === 0;
+  }
+
+  function moveBlockToZone(id, targetZone, evt){
+    pushHistory();
+    Object.keys(zones).forEach(z => {
+      zones[z] = zones[z].filter(b => b !== id);
+    });
+    const zoneEl = document.getElementById('zone-' + targetZone);
+    const siblings = Array.from(zoneEl.querySelectorAll('.cms-block'));
+    let insertAt = zones[targetZone].length;
+    for (let i=0;i<siblings.length;i++){
+      const rect = siblings[i].getBoundingClientRect();
+      if (evt && evt.clientY < rect.top + rect.height/2){ insertAt = i; break; }
+    }
+    zones[targetZone].splice(insertAt, 0, id);
+    renderBuilder();
+  }
+
+  function openManagePanel(id){
+    const b = blockDefs[id];
+    document.getElementById('panel-body').innerHTML = renderPanelBody(b);
+    document.getElementById('manage-panel').classList.add('open');
+  }
+  function closeManagePanel(){
+    document.getElementById('manage-panel').classList.remove('open');
+  }
+
+  function renderPanelBody(b){
+    if (b.kind === 'newsletter') {
+      return '' +
+        '<h2>' + b.tag + '</h2>' +
+        '<div class="panel-card">' +
+          '<label class="field-label">Heading</label>' +
+          '<textarea id="field-heading">' + b.heading + '</textarea>' +
+        '</div>' +
+        '<div class="panel-card">' +
+          '<label class="field-label">Subtext</label>' +
+          '<textarea id="field-subtext">' + b.subtext + '</textarea>' +
+        '</div>' +
+        '<div class="panel-card">' +
+          '<label class="field-label">Name field placeholder</label>' +
+          '<input type="text" id="field-nameph" value="' + b.namePlaceholder + '" style="margin-bottom:14px;">' +
+          '<label class="field-label">Email field placeholder</label>' +
+          '<input type="text" id="field-emailph" value="' + b.emailPlaceholder + '" style="margin-bottom:14px;">' +
+          '<label class="field-label">Button label</label>' +
+          '<input type="text" id="field-btnlabel" value="' + b.buttonLabel + '">' +
+        '</div>' +
+        '<div class="panel-footer"><button class="btn-save" onclick="saveNewsletter(\'' + b.id + '\')">Save changes</button></div>';
+    }
+    if (b.kind === 'banner') {
+      return '' +
+        '<h2>' + b.tag + '</h2>' +
+        '<div class="panel-card">' +
+          '<label class="field-label">Heading</label>' +
+          '<input type="text" id="field-heading" value="' + b.heading + '">' +
+        '</div>' +
+        '<div class="panel-card">' +
+          '<label class="field-label">Subtext</label>' +
+          '<textarea id="field-subtext">' + b.subtext + '</textarea>' +
+        '</div>' +
+        '<div class="panel-card">' +
+          '<label class="field-label">Button label</label>' +
+          '<input type="text" id="field-btnlabel" value="' + b.buttonLabel + '" style="margin-bottom:14px;">' +
+          '<label class="field-label">Button link</label>' +
+          '<input type="text" id="field-btnlink" value="' + b.buttonLink + '">' +
+        '</div>' +
+        '<div class="panel-footer"><button class="btn-save" onclick="saveBanner(\'' + b.id + '\')">Save changes</button></div>';
+    }
+    const rows = b.articles.map((a,i) => (
+      '<tr>' +
+        '<td>' + a.title + '<div class="row-summary">' + a.summary + '</div></td>' +
+        '<td class="row-actions"><a onclick="editArticle(\'' + b.id + '\',' + i + ')">Edit</a><a class="row-del" onclick="deleteArticle(\'' + b.id + '\',' + i + ')">Delete</a></td>' +
+      '</tr>'
+    )).join('');
+    const ctypes = b.ctypeOptions || ['news','review'];
+    const ctypeLabels = {news:'News', review:'Reviews', mixed:'Mixed', video:'Video'};
+    const contentTypeOptions = ctypes.map(v =>
+      '<label><input type="radio" name="ctype" value="' + v + '" ' + (b.contentType === v ? 'checked' : '') + '> ' + ctypeLabels[v] + '</label>'
+    ).join('');
+    return '' +
+      '<h2>' + b.tag + '</h2>' +
+      '<div class="panel-card">' +
+        '<label class="field-label">Heading</label>' +
+        '<input type="text" id="field-heading" value="' + b.heading + '">' +
+      '</div>' +
+      '<div class="panel-card">' +
+        '<label class="field-label">Content type</label>' +
+        '<div class="field-note">Choose whether this component shows news articles or car reviews. This controls which articles you can search for when adding items below.</div>' +
+        '<div class="radio-row">' + contentTypeOptions + '</div>' +
+      '</div>' +
+      '<div class="panel-card">' +
+        '<label class="field-label">Lead articles (up to ' + b.max + ')</label>' +
+        '<table class="panel-table"><thead><tr><th>Title</th><th>Actions</th></tr></thead><tbody id="article-rows">' + rows + '</tbody></table>' +
+        (b.articles.length >= b.max
+          ? '<div class="panel-max-note">Maximum of ' + b.max + ' article' + (b.max > 1 ? 's' : '') + ' reached.</div>'
+          : '<div class="add-article-row"><input type="text" id="new-article-title" placeholder="Search articles to add..."><button class="btn-add-small" onclick="addArticle(\'' + b.id + '\')">Add</button></div>') +
+      '</div>' +
+      '<div class="panel-footer"><button class="btn-save" onclick="saveArticleBlock(\'' + b.id + '\')">Save changes</button></div>';
+  }
+
+  function addArticle(id){
+    const input = document.getElementById('new-article-title');
+    const title = input.value.trim();
+    if (!title) return;
+    const b = blockDefs[id];
+    if (b.articles.length >= b.max) return;
+    pushHistory();
+    b.articles.push({title, summary:'Newly added article'});
+    openManagePanel(id);
+  }
+  function editArticle(id, idx){
+    const b = blockDefs[id];
+    const a = b.articles[idx];
+    const newTitle = prompt('Edit article title', a.title);
+    if (newTitle !== null && newTitle.trim()) {
+      pushHistory();
+      a.title = newTitle.trim();
+    }
+    openManagePanel(id);
+  }
+  function deleteArticle(id, idx){
+    const b = blockDefs[id];
+    pushHistory();
+    b.articles.splice(idx,1);
+    openManagePanel(id);
+  }
+  function saveArticleBlock(id){
+    const b = blockDefs[id];
+    pushHistory();
+    b.heading = document.getElementById('field-heading').value;
+    const checked = document.querySelector('input[name="ctype"]:checked');
+    if (checked) b.contentType = checked.value;
+    renderBuilder();
+    closeManagePanel();
+  }
+  function saveBanner(id){
+    const b = blockDefs[id];
+    pushHistory();
+    b.heading = document.getElementById('field-heading').value;
+    b.subtext = document.getElementById('field-subtext').value;
+    b.buttonLabel = document.getElementById('field-btnlabel').value;
+    b.buttonLink = document.getElementById('field-btnlink').value;
+    renderBuilder();
+    closeManagePanel();
+  }
+  function saveNewsletter(id){
+    const b = blockDefs[id];
+    pushHistory();
+    b.heading = document.getElementById('field-heading').value;
+    b.subtext = document.getElementById('field-subtext').value;
+    b.namePlaceholder = document.getElementById('field-nameph').value;
+    b.emailPlaceholder = document.getElementById('field-emailph').value;
+    b.buttonLabel = document.getElementById('field-btnlabel').value;
+    renderBuilder();
+    closeManagePanel();
+  }
+  function publishPage(){
+    alert('Page published (prototype only — no backend wired up).');
+  }
+
+  setupZoneDnD();
+  updateUndoButton();
 </script>
